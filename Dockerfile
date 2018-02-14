@@ -19,7 +19,8 @@ RUN \
 	wget && \
  apk add --no-cache \
  	--repository http://nl.alpinelinux.org/alpine/edge/testing \
-	perl-json-xs && \
+	perl-json-xs \
+	perl-lwp-protocol-https && \
 
 # fix logrotate
  sed -i "s#/var/log/messages {}.*# #g" /etc/logrotate.conf
@@ -29,4 +30,3 @@ COPY root/ /
 
 # ports and volumes
 VOLUME /config
-
