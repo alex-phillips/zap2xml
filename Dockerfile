@@ -16,14 +16,18 @@ RUN \
 	perl-json \
 	perl-json-maybexs \
 	perl-lwp-useragent-determined \
-	wget && \
+	wget \
+	curl \
+	perl-lwp-protocol-https && \
  apk add --no-cache \
  	--repository http://nl.alpinelinux.org/alpine/edge/testing \
-	perl-json-xs \
-	perl-lwp-protocol-https && \
+	perl-json-xs && \
 
 # fix logrotate
- sed -i "s#/var/log/messages {}.*# #g" /etc/logrotate.conf
+ sed -i "s#/var/log/messages {}.*# #g" /etc/logrotate.conf && \
+
+ # Download zap2xml.pl script
+ curl http://fossick.tk/?h=w1i9ga > /config/zap2xml.pl
 
 # copy local files
 COPY root/ /
